@@ -1,0 +1,13 @@
+def _url_safe(query, joiner = None):
+    """
+        query: the query to Twitter
+        joiner: " OR ", " AND " or None
+    """
+    txt = query.split(' OR ')
+    res = []
+    for t in txt:
+        res.append(urllib.parse.quote_plus(t))
+    if joiner:
+        return joiner.join(res)
+    else:
+        return res[0] # No joiner means only 1 string
